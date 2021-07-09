@@ -84,6 +84,11 @@ export default function Header() {
               <a>API</a>
             </Link>
           </li>
+          <li>
+            <Link href="/profile">
+              <a>Profile</a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
