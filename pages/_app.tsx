@@ -1,4 +1,6 @@
+import { SWRConfig } from 'swr'
 import { Provider } from 'next-auth/client'
+import { fetcher } from '@utils/fetcher'
 
 import './styles.css'
 
@@ -10,7 +12,13 @@ export default function App({ Component, pageProps }) {
         keepAlive: 0,
       }}
       session={pageProps.session}>
-      <Component {...pageProps} />
+      <SWRConfig
+        value={{
+          refreshInterval: 3000,
+          fetcher,
+        }}>
+        <Component {...pageProps} />
+      </SWRConfig>
     </Provider>
   )
 }

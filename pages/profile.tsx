@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/client'
 import Layout from '@components/Layout'
 import AccessDenied from '@components/AccessDenied'
+import { generateAttestation } from '@utils/fido-client'
 
 export default function ProtectedPage() {
   const [session, loading] = useSession()
@@ -18,8 +18,10 @@ export default function ProtectedPage() {
     )
   }
 
-  const registerWebAuthn = () => {
+  const registerWebAuthn = async () => {
     console.info('generate attestation')
+    await generateAttestation()
+
     console.info('verify attestation')
   }
 
